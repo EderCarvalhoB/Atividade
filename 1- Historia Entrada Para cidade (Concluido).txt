@@ -1,0 +1,164 @@
+#include <iostream>
+using namespace std;
+#include <cstdlib>
+#include <ctime>
+
+
+int main(int argc, char const* argv[]){
+    
+   int escolhacity;
+   int deci;
+   int carisma;
+   
+   //futuramente sera adicionado mais cidades 
+    cout <<"Escolha o seu lugar no mundo : \n (1) Cidade Princial \n" ;
+   cin >> escolhacity;
+   
+   cout << "Certo !! , Você escolheu a opção: \n" << escolhacity;
+   
+   if (escolhacity == 1){
+       cout << " \n Você esta indo em direção ao portão da Cidade e Avista os Guardas Oqué voce faz??\n";
+       cout << "(1) Falar com eles. \n (2) Passar Direto por eles e ir direto a cidade. \n (3) Observar eles. \n (4) Dançar. \n";
+       cin >> deci;
+   }
+   else{
+       cout << "Errou";
+   }
+   cout <<"............................CARREGANDO..................................... \n";
+   
+   
+   // case 1 Entrada ao Castelo .
+   switch(deci){
+       case 1: 
+       cout << "\n Oque voce quer dizer a eles ? : \n (1) Bom dia , eu recebi um Bilhete dizendo que estou autoarizado a entra. \n (2) Batata \n ";
+       cin >> deci;
+      
+       switch(deci){
+           
+         case 1:
+         cout << "Voce conseguiu entrar no reino parabens !! \n";
+         carisma = 2;
+         break;
+         case 2: 
+         cout <<"Você diz batata para os Guardas e logo apos voce suborna ele com algumas \n";
+         carisma = 1; 
+         break;
+       }
+       
+       break;
+   
+//  case 2 Os Guardas Barram o personagem e lgoo apos libera ,  3 escolha gire um dado D20 para.
+
+      case 2:
+      cout <<"Um dos Guarda te barra é pede a Autoarização ou um Passaporte \n";
+      cout <<"Oque voce faz ? : \n  (1) Você entrega a Autoarização.  \n(2) Ignora e continua andando em direção a cidade. \n (3) Olha para o guarda com cara assustadora. \n";
+      cin >> deci;
+      
+      switch(deci){
+           
+         case 1:
+         cout << "Voce conseguiu entrar no reino parabens !! \n";
+         carisma = 2;
+         break;
+         case 2: 
+         cout <<"Você é barrado pelos guardas e logo apos voce entrega o  bilhete e segue o caminho. \n";
+         carisma = -1; 
+         break;
+         case 3:
+         
+     cout << "Voce Agora irar Girar um Dado , se ele der menor que 15 você fracassará \n" ;
+     
+      srand((unsigned)time(0)); //para gerar números aleatórios reais.
+      int maior = 20;
+      int menor = 0;
+      int aleatorio = rand()%(maior-menor+1) + menor;
+      std::cout << "Numero Aleatorio = " << aleatorio << std::endl;
+      
+        if (aleatorio > 10){
+            cout <<"Voce botou medo nos caras! \n";
+        }
+        else{
+            cout <<"Eles pensão que voce tem algum problema mental e sentem pena e te deixam passar \n";
+            carisma= -2;
+        }
+   
+      }
+      
+      
+      break;
+      
+     // case 3  switch dentro do switch , entrada ao reino 
+       case 3: 
+      cout <<"Els te olham e te ignoram em seguida \n";
+      cout <<"Oque voce faz ? : \n (1) Continue olhando.  \n  (2) Passar pelo Portão da cidade\n ";
+      cin >> deci;
+      
+      switch(deci){
+          
+          case 1: 
+          cout << "O Guarda pergunta oque você quer , logo em seguida você entrega o bilhete \n";
+          cout << "O Guarda verifica e logo em seguida deixa você entrar \n";
+          break;
+          case 2:
+          
+         
+             cout << "Voce Agora irar Girar um Dado , se ele der menor que 12 você fracassará \n" ;
+     
+     srand((unsigned)time(0)); //para gerar números aleatórios reais.
+      int maior = 20;
+      int menor = 0;
+      int aleatorio = rand()%(maior-menor+1) + menor;
+      std::cout << "Numero Aleatorio = " << aleatorio << std::endl;
+      
+        if (aleatorio > 12){
+            cout <<"Você passou tranquilamente sem eles perceberem \n";
+        }
+        else{
+            cout <<"O Guarda só deixou pela sua ousadia de desafiar a lei que esta estabelecida na cidade \n";
+            carisma= 2;
+         }
+        break;
+      }
+      break;
+      
+      //case 4
+       case 4:
+      cout <<"Els te olham e te ignoram em seguida \n";
+      cout <<"Oque voce faz ? : \n (1) Continua Dançando.  \n  (2) Para de dançar e vai indo em direção a eles. \n";
+      cin >> deci; 
+                
+                switch(deci){
+                    
+                    case 1: 
+                    cout << "Voce Agora irar Girar um Dado , se ele der menor que 8 você fracassará \n" ;
+     
+                             srand((unsigned)time(0)); //para gerar números aleatórios reais.
+                            int maior = 20;
+                            int menor = 0;
+                            int aleatorio = rand()%(maior-menor+1) + menor;
+                            std::cout << "Numero Aleatorio = " << aleatorio << std::endl;
+      
+                                     if (aleatorio > 8){
+                                        cout <<"Assim nasce o novo rei no POP \n";
+                                        carisma = 3;
+                                                        }
+                                    else{
+                                        cout <<"você desiste da ideia e entrega logo o bilhete e entre no reino....(não foi dessa vez) \n";
+                                        carisma= -1;
+                                        }
+                                        
+                                    break;
+                                    }   
+                                    
+                        break;
+
+                       
+ 
+                        
+   }
+   
+   cout <<"............................CARREGANDO..................................... \n";
+   
+    return 0;
+}
+
