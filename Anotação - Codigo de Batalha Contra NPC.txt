@@ -1,0 +1,68 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+// Armazena as Decisões.
+   int escolhac;
+   int decicao;
+   int decifinal;
+   int EscolhaDeItem; //ainda n usei
+   char SorN;
+   string escolhasorn;
+   
+// Armazena a barra de ouro  e coisas relacionada a gastos de ouro
+   int ouro = 500;
+   int carisma = 0;
+   int gasto;
+   
+ //Armazena as escolhas dos slots de inventario  , OBS: slot 22 é para os 2 feitiço.
+   int slot1;
+   int slot2;
+   int slot3;
+   int slot22;
+   
+//Dado que influencia na historia.
+   int aleatorio;
+   int maior;
+   int menor; 
+   
+ //batalha
+ int batalha;
+ int hp =20 ;
+ int hpinimigo =20;
+ int hpinimigoi;
+
+
+// ISSO NAO VAI COLOCAR NO CODIGO
+
+int ataque =3 ;
+int agilidade = 1;
+int c;
+
+int main(){
+    for(hpinimigoi=20; hpinimigoi >=0; c--){
+        
+        cout <<"escolha um ataque \n (1) soco \n (2) chute \n";
+        cin>> escolhac;
+        
+        switch(escolhac){
+           case 1: 
+                    cout << "SOCO BRABO \n";
+                    srand((unsigned)time(0)); //para gerar números aleatórios reais.
+                     int maior = 20;
+                     int menor = 0;
+                    int aleatorio = rand()%(maior-menor+1) + menor;
+                     std::cout << "Numero Aleatorio = \n" << aleatorio << std::endl;
+                    
+                    
+                    hpinimigoi = hpinimigoi - (ataque + agilidade + aleatorio);
+                    cout<< "Hp inimigo : "<< hpinimigoi << "\n";
+            
+        }
+        
+        
+    }
+
+    return 0;
+}
