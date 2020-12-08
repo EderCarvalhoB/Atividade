@@ -1,0 +1,311 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+
+int main()
+{
+    
+// Armazena as Decisões.
+   int escolhac;
+   int decicao;
+   int decifinal;
+   int EscolhaDeItem; //ainda n usei
+   char SorN;
+   string escolhasorn;
+   
+// Armazena a barra de ouro  e coisas relacionada a gastos de ouro
+   int ouro = 500;
+   int carisma = 0;
+   int gasto;
+   
+ //Armazena as escolhas dos slots de inventario  , OBS: slot 22 é para os 2 feitiço.
+   int slot1;
+   int slot2;
+   int slot3;
+   int slot22;
+   
+//Dado que influencia na historia.
+   int aleatorio;
+   int maior;
+   int menor; 
+   
+ //batalha
+ int batalha;
+ int ataque =3 ;
+ int agilidade = 1;
+ int c;
+ int hpinimigoi;
+ int HP =20;
+ 
+ cout<<"Seu objetivo principal:  *Chegar na igreja para receber uma missão de uma organização que lhe chamou no bilhete* \n";
+ cout<<"Ao passar do reino você decide fazer oque ? \n (1) Olhar as Placas \n (2) Seguir em frente \n (3) Conversar com a Pessoa mais proxima \n";
+ cin>> escolhac;
+ 
+ switch(escolhac){
+                //essa é a parte que no caso se você olhar as placas
+                case 1: 
+                cout <<"Você olha as placas : \n (1) Loja  \n (2) Livraria de Feitiço \n (3) Açougue \n" ;
+                cin>>decicao;
+                                switch(decicao){
+                //essa parte da progamação é apenas sobre a loja 
+                                  case 1:
+                                  cout << "*Indo em direção a loja ,você abre a porta e lá você se depara com o vendador de items: - Desconto é apenas na Espada e Arco (Gire o Dado para conseguir seu desconto) * \n  (1) Espada - 50 Moedas  \n  (2) Adaga - 25 Moedas \n  (3) Arco - 70 Moedas \n";
+                                  cin >> decifinal;
+                                  if(decifinal==1){
+                                      cout << "Você escolheu a Espada , ela será selecionada no seu inventario \n";
+                                      // o valor slot1 significa o locar onde a espada fica , o 3 quer dizer o valor do atk da espada
+                                      slot1 = 3;
+                                      srand((unsigned)time(0)); //para gerar números aleatórios reais.
+                                      int maior = 20;
+                                      int menor = 0;
+                                      int aleatorio = rand()%(maior-menor+1) + menor;
+                                      std::cout << "Você teve um desconto de:   = " << aleatorio << std::endl;
+                                      return 0;
+                                      ouro = ouro+ aleatorio  - 50;
+                                                    }//final
+                                    else if (decifinal == 2){
+                                      // o valor slot1 significa o locar onde a adaga fica , o 3 quer dizer o valor do atk da adaga
+                                      cout << "Você escolheu a Adaga , ela será selecionada no seu inventario \n";
+                                      slot1 = 3;
+                                      ouro = ouro - 25;
+                                                    }//final do else
+                                        else if (decifinal == 3){
+                                    cout << "Você escolheu a Arco , ela será selecionada no seu inventario \n";
+                                      slot1 = 3;
+                                      srand((unsigned)time(0)); //para gerar números aleatórios reais.
+                                      int maior = 20;
+                                      int menor = 0;
+                                      int aleatorio = rand()%(maior-menor+1) + menor;
+                                      std::cout << "Você teve um desconto de:   = " << aleatorio << std::endl;
+                                      return 0;
+                                      ouro = ouro+ aleatorio  - 70;
+                                        }//final do outro else
+                                        cout <<"Volte sempre senhor !!";
+                                             break; // break do case 1
+                                        
+                // Essa parte é a loja de Feitiçaria
+                
+                                  case 2:
+                                    cout << "*Indo em direção a Loja ,você abre a porta e lá você se depara com o vendador de items - Desconto na invibilidade(O Dado Será lançado apos a compra) * \n  (1) Bola de Fogo - 50 Moedas \n (2) Fúria - 10 Moedas \n (3) Invizibilidade - 70 Moedas \n";
+                                    cin >> decifinal;
+                                    if(decifinal==1){
+                                    cout << "Você escolheu a Bola De Fogo , um grande ataque que causa medo em seus inimigos \n";
+                                    // o valor slot2 significa o locar onde a Bola de fogo fica , o 3 quer dizer o valor do atk da Bola de Fogo
+                                    slot2 = 3;
+                                    ouro = ouro - 50;
+                                                    } //if concluido
+                                        else if (decifinal == 2){
+                                      // o valor slot2 significa o locar onde a adaga fica , o 3 quer dizer o valor do atk da Furia
+                                      cout << "Você escolheu a Fúria , você pode atacar mais forte \n";
+                                      slot2 = 3;
+                                      ouro = ouro - 10;
+                                                    } // else concluido
+                                            else if (decifinal == 3){
+                                                // o valor slot2 significa o locar onde a Invizibilidade fica , o 3 quer dizer o valor do atk da mesma.
+                                                cout << "Você escolheu a Invizibilidade , você pode fazer ataques furtivos \n";
+                                                 slot2 = 3;
+                                                srand((unsigned)time(0)); //para gerar números aleatórios reais.
+                                                 int maior = 20;
+                                                int menor = 0;
+                                                int aleatorio = rand()%(maior-menor+1) + menor;
+                                                std::cout << "Você teve um desconto de:   = " << aleatorio << std::endl;
+                                                 return 0;
+                                                ouro = ouro+ aleatorio  - 70;
+                                                            }  //else concluido          
+                                                break; //break do caso 2
+                                                
+                //case 3 : Agora  o case 3 é sobre a loja de Açougue
+                
+                case 3:
+                                  cout << "*Indo em direção ao Açougue ,você abre a porta e lá você se depara com o vendador de items* \n  (1) Carne assada - 50 Moedas \n (2) Batata - 10 Moedas \n (3) Peixe - 5 Moedas \n (4) Torta - 70 Moedas \n (5) Maça - 10 Moedas \n"; 
+                                  cin >> decifinal;
+                                 
+                                  if(decifinal==1){
+                                      cout << "Você escolheu a Carne Assada , ela vai encher sua vida consideravelmente \n";
+                                      // o valor slot2 significa o locar onde a Bola de fogo fica , o 3 quer dizer o valor do atk da Bola de Fogo
+                                      slot3 = 3;
+                                      ouro = ouro - 50;
+                                                } //if concluido
+                                        else if (decifinal == 2){
+                                      // o valor slot2 significa o locar onde a adaga fica , o 3 quer dizer o valor do atk da Furia
+                                      cout << "Você escolheu a Batata ,hmm gostoso \n";
+                                      slot3 = 3;
+                                      ouro = ouro - 10;
+                                                    } //else if concluido
+                                                else if (decifinal == 3){
+                                        // o valor slot2 significa o locar onde a Invizibilidade fica , o 3 quer dizer o valor do atk da mesma.
+                                    cout << "Você escolheu a Peixe , hmmm isso é um peixe ? \n";
+                                      slot3 = 3;
+                                      ouro = ouro - 5;
+                                                            } //else if concluido
+                                                        else if (decifinal == 4){
+                                        // o valor slot2 significa o locar onde a Invizibilidade fica , o 3 quer dizer o valor do atk da mesma.
+                                    cout << "Você escolheu a Torta , ela será selecionada no seu inventario \n";
+                                      slot3 = 4;
+                                      ouro = ouro - 70;
+                                                            } //else if concluido
+                                                                 else if (decifinal == 5){
+                                        // o valor slot2 significa o locar onde a Invizibilidade fica , o 3 quer dizer o valor do atk da mesma.
+                                    cout << "Você escolheu a Maça , bem... ísso e uma maça \n";
+                                      slot3 = 5;
+                                      ouro = ouro - 10;
+                                                            } //else if concluido
+                                                                        break;
+                
+                                    
+                              
+    }
+                                     cout <<"Apos você fazer suas compras você Seguiu reto rumo a igreja local \n";
+                                     break; //break do case 1 "Olhar Placa"
+                                    // Agora a parte do caminho em frente , lá vai haver dois combates.
+                                    
+                                     case 2: //Case 2 "Seguir em Frente"
+                                    cout<<"Você segue uma rua e logo em seguida você se depara com tres caminho em qual vai seguir ? \n (1) O Caminho da Esquerda \n (2) Seguir Reto \n (3) O Caminho da Direita \n ";
+                                    cin>> decicao;
+                                            switch(decicao){
+                                                        case 1 :
+                                                        cout << "Você decidiu pegar o Caminho da Esquerda \n ";
+                                                        cout << "Ao tomar o caminho da esquerda , você de depara com diversas casas velhas quase caindo ao pedaço \n";
+                                                        cout << "Um grupo de pessoas sentadas no chão , uma delas é uma criança ,ela veio correndo pedindo dinheiro a você \n ";
+                                                        cout << "Você irar ajuda-la ? (S/N) \n";
+                                                        cin>>escolhasorn; 
+                                                                     if(escolhasorn == "S" || escolhasorn == "s"){
+                                                                        cout << "Digite a quantia que você quer doar para criança \n";
+                                                                        cin>>gasto;
+                                                                                    if (gasto >= 100){
+                                                                                    cout << "Voce pensa muito nos outros , Parabens você conseguiu 3 de carisma \n";
+                                                                                    carisma = carisma + 3;
+                                                                                    } //if concluido
+                                                                                    ouro= ouro - gasto;
+                                                                                    carisma = carisma + 1;
+                                                                                    }//if incluido
+                                                                            else if(escolhasorn == "N" || escolhasorn=="n"){
+                                                                            cout <<"Você ignora a criança e as pessoas te olham com uma expressão de nojo \n";
+                                                                            carisma = -1;
+                                                                                        }//else if concluido
+                                                                                         cout <<"\n" << "\n";
+                                    cout << "Ao chegar quase no final da rua voce vê um homem sendo assaltado. \n";
+                                    cout << "Você Decide ajuda-lo? (S/N) ";
+                                    cin >> escolhasorn;
+                                                                     if (escolhasorn == "S" || escolhasorn == "s"){
+            
+                                                                    cout<< " \n Voce entra em batalha  Aperte a Tecla (1) :\n ";
+                                                                    cin>> batalha;
+                                                                    switch(batalha){
+                                                                             case 1: 
+                                                                                 for(hpinimigoi=20; hpinimigoi >=0; c--){
+        
+                                                                                    cout <<"escolha um ataque \n (1) Espada \n (2) Esperar \n";
+                                                                                    cin>> escolhac;
+                                                                                    switch(escolhac){
+                                                                                         case 1: 
+                                                                                         cout << "Ataque com a Espada \n";
+                                                                                         srand((unsigned)time(0)); //para gerar números aleatórios reais.
+                                                                                         int maior = 20;
+                                                                                         int menor = 0;
+                                                                                         int aleatorio = rand()%(maior-menor+1) + menor;
+                                                                                         std::cout << "Numero Aleatorio = \n" << aleatorio << std::endl;
+                                                                                         hpinimigoi = hpinimigoi - (ataque + agilidade + aleatorio);
+                                                                                            cout<< "Hp inimigo : "<< hpinimigoi << "\n";
+                    
+                                                                                            HP=HP - 3;
+                   
+                                                                                            cout << "O Inimigo te atacou tambem : \n" << "Hp: "<< HP << "\n";
+                                                                                            if(HP==0){
+                                                                                            cout <<"Voce morreu";
+                                                                                            return 0;
+                                                                                            }//if concluido
+                                                                                            
+                                                                                            
+                                                                                           
+                                                                                            break;
+                                                                                        
+       }//Switch Da batalha 
+      }//For da batalha
+                                                                                            cout<<"Você ganho \n";
+                                                                                            cout<<"Apos a Batalha, *Você pergunta a um jovem garoto aonde fica uma Igreja Local* \n";
+                                                                                            cout<<"*O Garoto diz que fica no lado oposto da cidade *\n";
+                                                                                            cout<<"Você chega novamente no centro , e anda ate a parte direita da cidade e lá você finalmente encontra a igreja";
+                                                                                            break;
+                                                                                            
+     }//batalha
+                                                                         
+    }//if concluido
+                                                    case 2 :
+                                                     cout <<" \n Você decidiu ir Reto \n";
+                                                     cout<<"Você vê jovens bebendo perteo de um bar , um deles começa a te xingar aleatoriamente , o outro amigo que esta ao seu lado joga uma garrafa em sua direção oque voce faz ?\n (S) Lutar !\n (N) Fugir \n";
+                                                     cout<< escolhac;
+                                                     if (escolhasorn == "s" || escolhasorn == "S"){
+                                                         
+                                                         cout<< " \n Voce entrou em batalha  Aperte a Tecla (1) :\n ";
+                                                         cin>> batalha;
+                                                                    switch(batalha){
+                                                                            case 1:
+                                                     for(hpinimigoi=20; hpinimigoi >=0; c--){
+                                                                        cout <<"escolha um ataque \n (1) Espada \n (2) Esperar \n";
+                                                                        cin>> escolhac;
+                                                    switch(escolhac){
+                                                    case 1:
+                                                     srand((unsigned)time(0)); //para gerar números aleatórios reais.
+                                                     int maior = 20;
+                                                     int menor = 0;
+                                                     int aleatorio = rand()%(maior-menor+1) + menor;
+                                                     std::cout << "Numero Aleatorio = \n" << aleatorio << std::endl;
+                                                     hpinimigoi = hpinimigoi - (ataque + agilidade + aleatorio);
+                                                     cout<< "Hp inimigo : "<< hpinimigoi << "\n";
+                                                     HP=HP - 3;
+                                                     cout << "O Inimigo te atacou tambem : \n" << "Hp: "<< HP << "\n";
+                                                     if(HP==0){
+                                                     cout <<"Voce morreu";
+                                                     return 0;
+                                                             } //if concluido
+                                                    break;            
+          }//Segundo switch da batalha Da Rota "Ir Reto"
+        }//for da Batalha da Rota "Ir Reto"
+        break;
+     }//switch da Batalha Da Rota "Ir Reto"
+                                                    cout<< "Você conseguiu encontrar informação com o dono do bar , ele lhe agradeceu por ter ajudado a expulsar esses delinquentes";
+                                                    cout<< "Você foi ate a igreja \n";
+    }//if do case 2 "Ir Reto"
+                                                    else if(escolhasorn== "n" || escolhasorn == "N"){
+                                                    cout << "você deu meia volta e buscou o caminho da direita";
+                                                    }//else ** modificar
+                                                    break;
+                                                    //case da igreja..
+                                                    case 3: 
+                                                    
+                                                    cout << "Ao chegar na Igreja , você ve o padre sentado em uma das cadeiras do lugar \n";
+                                                    cout <<"Ele se levanta e começa a olhar a você , demora um pouco para ele lhe dar um 'belo bom dia' ;
+                                                    
+                                                    cout <<"Ola " << nome << "Você demorou um pouco , sente-se por favor";
+                                                    cout << "\n"<< "\n" << "\n";
+                                                    cout << "Eu que pedi para que lhe enviasse a essa cidade , eu lhe chamei para uma missão você aceita? (S/N)"
+                                                    cin>> escolhasorn;
+                                                            if(escolhasorn == "S" || escolhasorn == "s"){
+                                                                
+                                                                cout << "Obrigado por aceitar";
+                                                                
+                                                            }
+                                                            else if(escolhasorn == "N" || escolhasorn == "n") {
+                                                                
+                                                                cout <<"AH...Por favor ... aceitei tem uma bela recompensa para você apos concluir";
+                                                            }
+                                                    
+                                                    cout << "Enfim, a missão consiste : \n (1) Capturar 1 Porco. \n"
+                                                    cout << "\n";
+                                                    cout << "É super serio... minha subrinha gosta muito dele , preciso que você começe agora";
+                                            // CONTINUA .....
+                                            
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                    
+                                                    
+  }//Segundo switch "Seguir Pela Esqueda"
+ }//primeiro switch "Olhar As Placas"
+}//Função.
